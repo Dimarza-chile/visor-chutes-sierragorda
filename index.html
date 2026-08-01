@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Visor de inspeccion - Chutes</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TU-USUARIO/visor-chutes-core@main/styles.css">
+</head>
+<body>
+<div id="canvas-container"></div>
+<div id="ui">
+  <h3 id="chute-title">Cargando...</h3>
+  <div id="category-toggle"></div>
+  <div id="legend"></div>
+  <div id="counts"></div>
+  <label id="turno-label">Supervisor / turno</label>
+  <input id="turno-input" type="text" placeholder="Ej: Juan Perez - Turno A">
+  <button id="btn-save">Guardar cambios</button>
+  <div id="save-status"></div>
+  <label id="gap-label" style="font-size:11px; color:#888; margin-top:8px; display:block;">G.A.P. placa guia - correa (opcional)</label>
+  <input id="gap-input" type="text" placeholder='Ej: 3 mm o 1/8"' style="width:100%; padding:6px; font-size:12px; border-radius:6px; border:1px solid #ccc; box-sizing:border-box;">
+  <button id="btn-pdf" style="margin-top:8px; width:100%; padding:8px; border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer; font-size:12px;">Exportar informe PDF</button>
+  <button id="btn-reset">Restablecer vista</button>
+</div>
+<div id="selected-info">
+  <strong id="sel-name">-</strong>
+  <div id="sel-state">-</div>
+</div>
+<div id="loading">Cargando modelo 3D...</div>
+<div id="code-toast"></div>
+
+<!-- Configuracion propia de esta minera -->
+<script src="js/chutes-config.js"></script>
+<script src="js/firebase-config.js"></script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+  import { getDatabase, ref, update, onValue, get } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
+
+  const fbApp = initializeApp(window.FIREBASE_CONFIG);
+  const db = getDatabase(fbApp);
+  window.__fb = { ref, update, onValue, get, db };
+</script>
+
+<!-- Librerias -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+<!-- Motor compartido (se mantiene en un solo lugar para las 3 mineras) -->
+<script src="https://cdn.jsdelivr.net/gh/TU-USUARIO/visor-chutes-core@main/engine.js"></script>
+</body>
+</html>
