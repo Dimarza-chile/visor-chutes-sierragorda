@@ -6,8 +6,7 @@ en un repositorio compartido aparte: `visor-chutes-core`.
 
 ## Configuracion inicial (una sola vez)
 
-1. Ve a `index.html` y reemplaza `TU-USUARIO` (aparece 2 veces) por tu
-   usuario real de GitHub, en las lineas que apuntan a `visor-chutes-core`.
+1. El `index.html` ya viene configurado con el usuario `Dimarza-chile` -- no necesitas tocar esto.
 
 2. Completa `js/firebase-config.js` con los datos de tu proyecto Firebase
    para esta minera (Firebase Console -> Configuracion del proyecto).
